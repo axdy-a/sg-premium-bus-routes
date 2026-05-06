@@ -1,0 +1,362 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.8457585,
+          1.3276217
+        ]
+      },
+      "properties": {
+        "stop": "-Z651",
+        "details": "Along the road outside EASB",
+        "wab": "true",
+        "direction": "Ah Hood Road to Phillip Street",
+        "sequence": 0
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.8475491,
+          1.3281431
+        ]
+      },
+      "properties": {
+        "stop": "-Z454",
+        "details": "Opposite Lamp Post 13",
+        "wab": "true",
+        "direction": "Ah Hood Road to Phillip Street",
+        "sequence": 1
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.850828688685,
+          1.32830186081857
+        ]
+      },
+      "properties": {
+        "stop": "-P402",
+        "details": "Blk 102",
+        "wab": "true",
+        "direction": "Ah Hood Road to Phillip Street",
+        "sequence": 2
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.8539267,
+          1.328186667
+        ]
+      },
+      "properties": {
+        "stop": "-P403",
+        "details": "Blk 105",
+        "wab": "true",
+        "direction": "Ah Hood Road to Phillip Street",
+        "sequence": 3
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.85731929,
+          1.32531992
+        ]
+      },
+      "properties": {
+        "stop": "-Z652",
+        "details": "Blk 114",
+        "wab": "true",
+        "direction": "Ah Hood Road to Phillip Street",
+        "sequence": 4
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.85938111,
+          1.32544667
+        ]
+      },
+      "properties": {
+        "stop": "-Z653",
+        "details": "Blk 29",
+        "wab": "true",
+        "direction": "Ah Hood Road to Phillip Street",
+        "sequence": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.85978762,
+          1.32721152
+        ]
+      },
+      "properties": {
+        "stop": "-Z654",
+        "details": "Blk 19",
+        "wab": "true",
+        "direction": "Ah Hood Road to Phillip Street",
+        "sequence": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.85810762,
+          1.32782676
+        ]
+      },
+      "properties": {
+        "stop": "-Z655",
+        "details": "Opp Blk 65",
+        "wab": "true",
+        "direction": "Ah Hood Road to Phillip Street",
+        "sequence": 7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.8548891,
+          1.326523285
+        ]
+      },
+      "properties": {
+        "stop": "-P393",
+        "details": "Opp NKF",
+        "wab": "true",
+        "direction": "Ah Hood Road to Phillip Street",
+        "sequence": 8
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.8532662,
+          1.324560661
+        ]
+      },
+      "properties": {
+        "stop": "-P389",
+        "details": "Bef Kim Keat Lane",
+        "wab": "true",
+        "direction": "Ah Hood Road to Phillip Street",
+        "sequence": 9
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.8525671,
+          1.323069687
+        ]
+      },
+      "properties": {
+        "stop": "-P390",
+        "details": "Opp Balestier Pt",
+        "wab": "true",
+        "direction": "Ah Hood Road to Phillip Street",
+        "sequence": 10
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.8530378,
+          1.321438059
+        ]
+      },
+      "properties": {
+        "stop": "-P391",
+        "details": "Bef Blk 104",
+        "wab": "true",
+        "direction": "Ah Hood Road to Phillip Street",
+        "sequence": 11
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.8383828488293,
+          1.28177041153491
+        ]
+      },
+      "properties": {
+        "stop": "-PS13",
+        "details": "Outram Pk Stn Exit 1",
+        "wab": "true",
+        "direction": "Ah Hood Road to Phillip Street",
+        "sequence": 12
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.841126944004,
+          1.27553472200739
+        ]
+      },
+      "properties": {
+        "stop": "-PS14",
+        "details": "Blk 1G",
+        "wab": "true",
+        "direction": "Ah Hood Road to Phillip Street",
+        "sequence": 13
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.842359,
+          1.273522
+        ]
+      },
+      "properties": {
+        "stop": "-Z656",
+        "details": "Along the road opposite Genting Centre",
+        "wab": "true",
+        "direction": "Ah Hood Road to Phillip Street",
+        "sequence": 14
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.8463247,
+          1.275703395
+        ]
+      },
+      "properties": {
+        "stop": "-P136",
+        "details": "Tanjong Pagar Stn Exit C",
+        "wab": "true",
+        "direction": "Ah Hood Road to Phillip Street",
+        "sequence": 15
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.8477623,
+          1.278921246
+        ]
+      },
+      "properties": {
+        "stop": "-P132",
+        "details": "Aft Telok Ayer St",
+        "wab": "true",
+        "direction": "Ah Hood Road to Phillip Street",
+        "sequence": 16
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.84998904,
+          1.28255525
+        ]
+      },
+      "properties": {
+        "stop": "-P125",
+        "details": "Prudential Twr",
+        "wab": "true",
+        "direction": "Ah Hood Road to Phillip Street",
+        "sequence": 17
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.8527016,
+          1.2837403
+        ]
+      },
+      "properties": {
+        "stop": "-Z633",
+        "details": "Along the road outside Clifford Centre",
+        "wab": "true",
+        "direction": "Ah Hood Road to Phillip Street",
+        "sequence": 18
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.851819,
+          1.285056
+        ]
+      },
+      "properties": {
+        "stop": "-Z657",
+        "details": "Along the road outside Singapore Land Tower",
+        "wab": "true",
+        "direction": "Ah Hood Road to Phillip Street",
+        "sequence": 19
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.849775,
+          1.284572
+        ]
+      },
+      "properties": {
+        "stop": "-Z658",
+        "details": "Along the road outside Tan Ean Kiam Building",
+        "wab": "true",
+        "direction": "Ah Hood Road to Phillip Street",
+        "sequence": 20
+      }
+    }
+  ]
+}

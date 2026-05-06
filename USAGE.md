@@ -1,0 +1,83 @@
+# SG BUS DATA — how to run
+
+Run commands from the **project root** (`SG BUS DATA`), unless you use absolute paths.
+
+## Layout
+
+| Folder | Contents |
+|--------|----------|
+| `services/` | One JSON per bus service (directions + ordered stop codes). |
+| `data/bus-stops.json` | Master stop list with coordinates. |
+| `scripts/` | Python tools. |
+| `output/<service>/` | Generated GeoJSON for that service number. |
+
+## One-shot: points + road lines
+
+Runs `route_to_geojson.py`, then `stops_to_road_lines.py`, and writes both files under `output/<service>/`.
+
+```powershell
+python .\scripts\run_bus_route.py services/565.json
+```
+
+Other examples:
+
+```powershell
+python .\scripts\run_bus_route.py services\722.json
+python .\scripts\run_bus_route.py "C:\path\to\960.json" --bus-stops "C:\path\to\bus-stops.json"
+```
+
+Default stops database: `data/bus-stops.json`. Override with `--bus-stops`.
+
+### Faster roads step (skip Overpass snap) ** ure killing your accuracy if u follow this shit************
+
+By default, `stops_to_road_lines.py` uses Overpass + OSRM (slow, avoids snapping only via OSM query). To use **OSRM only** (much faster; may still use `highway=service` links):
+
+```powershell
+python .\scripts\run_bus_route.py services/565.json -- --allow-service
+```
+
+Anything **after `--`** is passed only to `stops_to_road_lines.py`.
+
+### Outputs
+
+For `services/565.json` you get:
+
+- `output/565/565.geojson` — stop points  
+- `output/565/565-roads.geojson` — road-following lines  
+
+---
+
+## Run scripts separately
+
+From project root, pass explicit paths (recommended):
+
+**Points only**
+
+```powershell
+python .\scripts\route_to_geojson.py services\565.json data\bus-stops.json output\565\565.geojson
+```
+
+**Road lines only**
+
+```powershell
+python .\scripts\stops_to_road_lines.py services\565.json data\bus-stops.json output\565\565-roads.geojson
+```
+
+If you omit arguments, defaults assume **`services/767.json`**, **`data/bus-stops.json`**, and outputs under **`output/767/`** (see inside each script).
+
+---
+
+## Service JSON shape
+
+Each file is a JSON array of directions:
+
+```json
+[
+  {
+    "name": "Direction label",
+    "stops": ["-Z665", "-Z805", "..."]
+  }
+]
+```
+
+Stop codes must match `"name"` entries in `data/bus-stops.json`.
