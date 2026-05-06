@@ -1,6 +1,8 @@
-# SG BUS DATA — how to run
+# SG premium bus routes
 
-Run commands from the **project root** (`SG BUS DATA`), unless you use absolute paths.
+Build GeoJSON for Singapore bus services: ordered stops → point layers and OSRM/Overpass road LineStrings. Data is project-local (not an official LTA product).
+
+Run commands from the **project root** (`sg-premium-bus-routes`), unless you use absolute paths.
 
 ## Layout
 
@@ -94,7 +96,7 @@ The project root is already a Git repository with an initial commit.
 2. From the project root:
 
 ```powershell
-cd ".\Desktop\My Projects\SG BUS DATA"
+cd ".\Desktop\My Projects\sg-premium-bus-routes"
 git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
 git push -u origin main
 ```
@@ -104,5 +106,5 @@ Use SSH instead if you prefer: `git@github.com:YOUR_USERNAME/YOUR_REPO.git`.
 **Install [GitHub CLI](https://cli.github.com/)** (`gh`) if you want one-command create + push after `gh auth login`:
 
 ```powershell
-gh repo create SG-BUS-DATA --public --source=. --remote=origin --push
+gh repo create sg-premium-bus-routes --public --source=. --remote=origin --push
 ```
