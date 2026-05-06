@@ -28,9 +28,9 @@ python .\scripts\run_bus_route.py "C:\path\to\960.json" --bus-stops "C:\path\to\
 
 Default stops database: `data/bus-stops.json`. Override with `--bus-stops`.
 
-### Faster roads step (skip Overpass snap) ** ure killing your accuracy if u follow this shit************
+### Faster roads step (skip Overpass snap)
 
-By default, `stops_to_road_lines.py` uses Overpass + OSRM (slow, avoids snapping only via OSM query). To use **OSRM only** (much faster; may still use `highway=service` links):
+By default, `stops_to_road_lines.py` uses Overpass + OSRM (slow; snaps stops to non-service OSM ways first). To use **OSRM only** (much faster; may still use `highway=service` links where OSRM snaps):
 
 ```powershell
 python .\scripts\run_bus_route.py services/565.json -- --allow-service
@@ -81,3 +81,28 @@ Each file is a JSON array of directions:
 ```
 
 Stop codes must match `"name"` entries in `data/bus-stops.json`.
+
+---
+
+## Git (this repo is initialized on `main`)
+
+The project root is already a Git repository with an initial commit.
+
+**Push to a new empty GitHub repo**
+
+1. Create a repository on GitHub (no README/license if you want a clean push).
+2. From the project root:
+
+```powershell
+cd ".\Desktop\My Projects\SG BUS DATA"
+git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
+git push -u origin main
+```
+
+Use SSH instead if you prefer: `git@github.com:YOUR_USERNAME/YOUR_REPO.git`.
+
+**Install [GitHub CLI](https://cli.github.com/)** (`gh`) if you want one-command create + push after `gh auth login`:
+
+```powershell
+gh repo create SG-BUS-DATA --public --source=. --remote=origin --push
+```
