@@ -6,15 +6,15 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          103.7435727,
-          1.35754269
+          103.7602083,
+          1.387154726
         ]
       },
       "properties": {
-        "stop": "-Z665",
-        "details": "Blk 467 CP",
+        "stop": "-P356",
+        "details": "Senja FC",
         "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
+        "direction": "Senja Road to Gopeng Street",
         "sequence": 0
       }
     },
@@ -23,15 +23,15 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          103.743215,
-          1.360292
+          103.763361,
+          1.387703
         ]
       },
       "properties": {
-        "stop": "-Z805",
-        "details": "Blk 432A",
+        "stop": "-Z634",
+        "details": "Blk 643 CP",
         "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
+        "direction": "Senja Road to Gopeng Street",
         "sequence": 1
       }
     },
@@ -40,15 +40,15 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          103.74177024979922,
-          1.36195561634293
+          103.764919000027,
+          1.38679108297845
         ]
       },
       "properties": {
-        "stop": "-Z806",
-        "details": "Blk 433C",
+        "stop": "-Z635",
+        "details": "Opp Jelapang Stn",
         "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
+        "direction": "Senja Road to Gopeng Street",
         "sequence": 2
       }
     },
@@ -57,15 +57,15 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          103.73950238,
-          1.35915702
+          103.7649959,
+          1.384475172
         ]
       },
       "properties": {
-        "stop": "-Z460",
-        "details": "Blk 436A",
+        "stop": "-P348",
+        "details": "Blk 532",
         "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
+        "direction": "Senja Road to Gopeng Street",
         "sequence": 3
       }
     },
@@ -74,15 +74,15 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          103.73890781,
-          1.35730457
+          103.7675781,
+          1.387124827
         ]
       },
       "properties": {
-        "stop": "-Z666",
-        "details": "Blk 439C",
+        "stop": "-P345",
+        "details": "Blk 516",
         "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
+        "direction": "Senja Road to Gopeng Street",
         "sequence": 4
       }
     },
@@ -91,15 +91,15 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          103.74090581028908,
-          1.35540218970451
+          103.76879686807,
+          1.38927144639115
         ]
       },
       "properties": {
-        "stop": "-Z802",
-        "details": "Opp Blk 461C",
+        "stop": "-Z412",
+        "details": "Blk 548B",
         "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
+        "direction": "Senja Road to Gopeng Street",
         "sequence": 5
       }
     },
@@ -108,15 +108,15 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          103.74299081,
-          1.35367643
+          103.7714646,
+          1.388262581
         ]
       },
       "properties": {
-        "stop": "-Z669",
-        "details": "Opp Blk 451A",
+        "stop": "-P349",
+        "details": "Blk 485",
         "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
+        "direction": "Senja Road to Gopeng Street",
         "sequence": 6
       }
     },
@@ -125,15 +125,15 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          103.74510884,
-          1.349906
+          103.7707957,
+          1.384585562
         ]
       },
       "properties": {
-        "stop": "-Z670",
-        "details": "Opp Blk 144",
+        "stop": "-P351",
+        "details": "Fajar Stn",
         "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
+        "direction": "Senja Road to Gopeng Street",
         "sequence": 7
       }
     },
@@ -142,15 +142,15 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          103.74590278,
-          1.34682314
+          103.769328097051,
+          1.3813330335154
         ]
       },
       "properties": {
-        "stop": "-Z671",
-        "details": "Blk 109",
+        "stop": "-Z057",
+        "details": "Bet Blks 443A/443B",
         "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
+        "direction": "Senja Road to Gopeng Street",
         "sequence": 8
       }
     },
@@ -159,15 +159,15 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          103.74835777,
-          1.34527424
+          103.771149033396,
+          1.38084522961484
         ]
       },
       "properties": {
-        "stop": "-Z672",
-        "details": "Opp Bt Batok Swim Cplx",
+        "stop": "-Z058",
+        "details": "Blk 442D",
         "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
+        "direction": "Senja Road to Gopeng Street",
         "sequence": 9
       }
     },
@@ -176,15 +176,15 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          103.75436398,
-          1.34359093
+          103.7725763,
+          1.380215011
         ]
       },
       "properties": {
-        "stop": "-Z673",
-        "details": "Blk 291E",
+        "stop": "-P336",
+        "details": "Bangkit Stn",
         "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
+        "direction": "Senja Road to Gopeng Street",
         "sequence": 10
       }
     },
@@ -193,15 +193,15 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          103.8430731,
-          1.27321861
+          103.772639630028,
+          1.37402225721945
         ]
       },
       "properties": {
-        "stop": "-Z674",
-        "details": "Opp Fuji Xerox Twrs",
+        "stop": "-Z636",
+        "details": "Blk 219",
         "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
+        "direction": "Senja Road to Gopeng Street",
         "sequence": 11
       }
     },
@@ -210,15 +210,15 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          103.8430919,
-          1.27519166
+          103.774413610282,
+          1.37242134216992
         ]
       },
       "properties": {
-        "stop": "-Z675",
-        "details": "Tg Pagar Plaza",
+        "stop": "-Z637",
+        "details": "Blk 202",
         "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
+        "direction": "Senja Road to Gopeng Street",
         "sequence": 12
       }
     },
@@ -227,15 +227,15 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          103.84593,
-          1.2753
+          103.77558853634,
+          1.36823452426378
         ]
       },
       "properties": {
-        "stop": "-P985",
-        "details": "Along the road outside Twenty Anson",
+        "stop": "-Z638",
+        "details": "Aft Chestnut Ave",
         "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
+        "direction": "Senja Road to Gopeng Street",
         "sequence": 13
       }
     },
@@ -244,15 +244,15 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          103.8477623,
-          1.278921246
+          103.775587682327,
+          1.36645894982356
         ]
       },
       "properties": {
-        "stop": "-P132",
-        "details": "Aft Telok Ayer St",
+        "stop": "-Z639",
+        "details": "Opp Dairy Farm Mall",
         "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
+        "direction": "Senja Road to Gopeng Street",
         "sequence": 14
       }
     },
@@ -261,15 +261,15 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          103.84998904,
-          1.28255525
+          103.8490869,
+          1.284496673
         ]
       },
       "properties": {
-        "stop": "-P125",
-        "details": "Prudential Twr",
+        "stop": "-P144",
+        "details": "OCBC Ctr",
         "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
+        "direction": "Senja Road to Gopeng Street",
         "sequence": 15
       }
     },
@@ -278,15 +278,15 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          103.8527016,
-          1.2837403
+          103.85306514,
+          1.28162601
         ]
       },
       "properties": {
-        "stop": "-Z633",
-        "details": "Along the road outside Clifford Centre",
+        "stop": "-PD51",
+        "details": "The Sail",
         "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
+        "direction": "Senja Road to Gopeng Street",
         "sequence": 16
       }
     },
@@ -295,15 +295,15 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          103.85342223,
-          1.28561841
+          103.852918,
+          1.278832
         ]
       },
       "properties": {
-        "stop": "-P123",
-        "details": "Fullerton Sq",
+        "stop": "-Z785",
+        "details": "Opp Downtown Stn",
         "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
+        "direction": "Senja Road to Gopeng Street",
         "sequence": 17
       }
     },
@@ -312,15 +312,15 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          103.85784623,
-          1.29317776
+          103.85045,
+          1.277728
         ]
       },
       "properties": {
-        "stop": "-P119",
-        "details": "Suntec Convention Ctr",
+        "stop": "-Z786",
+        "details": "Shenton Way Stn Exit 3",
         "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
+        "direction": "Senja Road to Gopeng Street",
         "sequence": 18
       }
     },
@@ -329,15 +329,15 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          103.85933815,
-          1.29576572
+          103.846135,
+          1.277289
         ]
       },
       "properties": {
-        "stop": "-PD50",
-        "details": "Suntec Twr Two",
+        "stop": "-Z783",
+        "details": "In front of Guoco Tower",
         "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
+        "direction": "Senja Road to Gopeng Street",
         "sequence": 19
       }
     },
@@ -346,15 +346,15 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          103.85864518,
-          1.29919826
+          103.845161,
+          1.275388
         ]
       },
       "properties": {
-        "stop": "-PJ17",
-        "details": "Opp The Gateway",
+        "stop": "-Z784",
+        "details": "Beside Twenty Anson",
         "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
+        "direction": "Senja Road to Gopeng Street",
         "sequence": 20
       }
     }

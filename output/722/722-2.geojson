@@ -6,210 +6,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          103.7435727,
-          1.35754269
-        ]
-      },
-      "properties": {
-        "stop": "-Z665",
-        "details": "Blk 467 CP",
-        "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
-        "sequence": 0
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          103.743215,
-          1.360292
-        ]
-      },
-      "properties": {
-        "stop": "-Z805",
-        "details": "Blk 432A",
-        "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
-        "sequence": 1
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          103.74177024979922,
-          1.36195561634293
-        ]
-      },
-      "properties": {
-        "stop": "-Z806",
-        "details": "Blk 433C",
-        "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
-        "sequence": 2
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          103.73950238,
-          1.35915702
-        ]
-      },
-      "properties": {
-        "stop": "-Z460",
-        "details": "Blk 436A",
-        "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
-        "sequence": 3
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          103.73890781,
-          1.35730457
-        ]
-      },
-      "properties": {
-        "stop": "-Z666",
-        "details": "Blk 439C",
-        "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
-        "sequence": 4
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          103.74090581028908,
-          1.35540218970451
-        ]
-      },
-      "properties": {
-        "stop": "-Z802",
-        "details": "Opp Blk 461C",
-        "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
-        "sequence": 5
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          103.74299081,
-          1.35367643
-        ]
-      },
-      "properties": {
-        "stop": "-Z669",
-        "details": "Opp Blk 451A",
-        "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
-        "sequence": 6
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          103.74510884,
-          1.349906
-        ]
-      },
-      "properties": {
-        "stop": "-Z670",
-        "details": "Opp Blk 144",
-        "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
-        "sequence": 7
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          103.74590278,
-          1.34682314
-        ]
-      },
-      "properties": {
-        "stop": "-Z671",
-        "details": "Blk 109",
-        "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
-        "sequence": 8
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          103.74835777,
-          1.34527424
-        ]
-      },
-      "properties": {
-        "stop": "-Z672",
-        "details": "Opp Bt Batok Swim Cplx",
-        "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
-        "sequence": 9
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          103.75436398,
-          1.34359093
-        ]
-      },
-      "properties": {
-        "stop": "-Z673",
-        "details": "Blk 291E",
-        "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
-        "sequence": 10
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          103.8430731,
-          1.27321861
-        ]
-      },
-      "properties": {
-        "stop": "-Z674",
-        "details": "Opp Fuji Xerox Twrs",
-        "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
-        "sequence": 11
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
           103.8430919,
           1.27519166
         ]
@@ -218,8 +14,8 @@
         "stop": "-Z675",
         "details": "Tg Pagar Plaza",
         "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
-        "sequence": 12
+        "direction": "Tanjong Pagar Road to Senja Road",
+        "sequence": 0
       }
     },
     {
@@ -227,16 +23,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          103.84593,
-          1.2753
+          103.845161,
+          1.275388
         ]
       },
       "properties": {
-        "stop": "-P985",
-        "details": "Along the road outside Twenty Anson",
+        "stop": "-Z784",
+        "details": "Beside Twenty Anson",
         "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
-        "sequence": 13
+        "direction": "Tanjong Pagar Road to Senja Road",
+        "sequence": 1
       }
     },
     {
@@ -252,8 +48,8 @@
         "stop": "-P132",
         "details": "Aft Telok Ayer St",
         "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
-        "sequence": 14
+        "direction": "Tanjong Pagar Road to Senja Road",
+        "sequence": 2
       }
     },
     {
@@ -269,7 +65,211 @@
         "stop": "-P125",
         "details": "Prudential Twr",
         "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
+        "direction": "Tanjong Pagar Road to Senja Road",
+        "sequence": 3
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.852694,
+          1.28369
+        ]
+      },
+      "properties": {
+        "stop": "-Z664",
+        "details": "Outside Clifford Centre",
+        "wab": "true",
+        "direction": "Tanjong Pagar Road to Senja Road",
+        "sequence": 4
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.8518,
+          1.285056
+        ]
+      },
+      "properties": {
+        "stop": "-Z835",
+        "details": "Outside Singapore Land Tower",
+        "wab": "true",
+        "direction": "Tanjong Pagar Road to Senja Road",
+        "sequence": 5
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.775339,
+          1.3658625
+        ]
+      },
+      "properties": {
+        "stop": "-Z836",
+        "details": "Dairy Farm Mall",
+        "wab": "true",
+        "direction": "Tanjong Pagar Road to Senja Road",
+        "sequence": 6
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.77530877476855,
+          1.36772582083696
+        ]
+      },
+      "properties": {
+        "stop": "-Z837",
+        "details": "Bef Chestnut Ave",
+        "wab": "true",
+        "direction": "Tanjong Pagar Road to Senja Road",
+        "sequence": 7
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.77461859337586,
+          1.37154303506556
+        ]
+      },
+      "properties": {
+        "stop": "-Z838",
+        "details": "Opp Blk 201",
+        "wab": "true",
+        "direction": "Tanjong Pagar Road to Senja Road",
+        "sequence": 8
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.77293526626733,
+          1.37355053515267
+        ]
+      },
+      "properties": {
+        "stop": "-Z839",
+        "details": "Opp Blk 219",
+        "wab": "true",
+        "direction": "Tanjong Pagar Road to Senja Road",
+        "sequence": 9
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.7723308,
+          1.379888033
+        ]
+      },
+      "properties": {
+        "stop": "-P335",
+        "details": "Opp Bangkit Stn",
+        "wab": "true",
+        "direction": "Tanjong Pagar Road to Senja Road",
+        "sequence": 10
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.7708487,
+          1.380221074
+        ]
+      },
+      "properties": {
+        "stop": "-P337",
+        "details": "Blk 239",
+        "wab": "true",
+        "direction": "Tanjong Pagar Road to Senja Road",
+        "sequence": 11
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.7691773,
+          1.381170297
+        ]
+      },
+      "properties": {
+        "stop": "-P338",
+        "details": "Blk 401A CP",
+        "wab": "true",
+        "direction": "Tanjong Pagar Road to Senja Road",
+        "sequence": 12
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.7702068,
+          1.38422184
+        ]
+      },
+      "properties": {
+        "stop": "-P352",
+        "details": "Opp Fajar Stn",
+        "wab": "true",
+        "direction": "Tanjong Pagar Road to Senja Road",
+        "sequence": 13
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.7715434,
+          1.388053005
+        ]
+      },
+      "properties": {
+        "stop": "-P350",
+        "details": "Blk 457",
+        "wab": "true",
+        "direction": "Tanjong Pagar Road to Senja Road",
+        "sequence": 14
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          103.76842967593706,
+          1.3885418939603
+        ]
+      },
+      "properties": {
+        "stop": "-Z439",
+        "details": "Blk 547C",
+        "wab": "true",
+        "direction": "Tanjong Pagar Road to Senja Road",
         "sequence": 15
       }
     },
@@ -278,15 +278,15 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          103.8527016,
-          1.2837403
+          103.7676357,
+          1.386950724
         ]
       },
       "properties": {
-        "stop": "-Z633",
-        "details": "Along the road outside Clifford Centre",
+        "stop": "-P346",
+        "details": "Blk 506",
         "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
+        "direction": "Tanjong Pagar Road to Senja Road",
         "sequence": 16
       }
     },
@@ -295,15 +295,15 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          103.85342223,
-          1.28561841
+          103.76489752763662,
+          1.38428576640159
         ]
       },
       "properties": {
-        "stop": "-P123",
-        "details": "Fullerton Sq",
+        "stop": "-PC63",
+        "details": "Opp Blk 532",
         "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
+        "direction": "Tanjong Pagar Road to Senja Road",
         "sequence": 17
       }
     },
@@ -312,15 +312,15 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          103.85784623,
-          1.29317776
+          103.7630575,
+          1.386714167
         ]
       },
       "properties": {
-        "stop": "-P119",
-        "details": "Suntec Convention Ctr",
+        "stop": "-P359",
+        "details": "Opp Blk 650",
         "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
+        "direction": "Tanjong Pagar Road to Senja Road",
         "sequence": 18
       }
     },
@@ -329,33 +329,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          103.85933815,
-          1.29576572
+          103.7602083,
+          1.387154726
         ]
       },
       "properties": {
-        "stop": "-PD50",
-        "details": "Suntec Twr Two",
+        "stop": "-P356",
+        "details": "Senja FC",
         "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
+        "direction": "Tanjong Pagar Road to Senja Road",
         "sequence": 19
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          103.85864518,
-          1.29919826
-        ]
-      },
-      "properties": {
-        "stop": "-PJ17",
-        "details": "Opp The Gateway",
-        "wab": "true",
-        "direction": "Bukit Batok West Avenue 5 to Beach Road",
-        "sequence": 20
       }
     }
   ]

@@ -10,7 +10,7 @@ From the project root, with **Python 3** available:
 python .\scripts\run_bus_route.py services\565.json
 ```
 
-That writes `output/565/565.geojson` (stops) and `output/565/565-roads.geojson` (roads). Use any `services/<number>.json` file the same way.
+That writes per-direction GeoJSON under `output/<service>/` (e.g. `565-1.geojson`, `565-1-roads.geojson`, …). Use any `services/<number>.json` file the same way.
 
 ## Repository layout
 

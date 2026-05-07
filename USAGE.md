@@ -15,7 +15,7 @@ Run commands from the **project root** (`sg-premium-bus-routes`), unless you use
 
 ## One-shot: points + road lines
 
-Runs `route_to_geojson.py`, then `stops_to_road_lines.py`, and writes both files under `output/<service>/`.
+Runs `route_to_geojson.py`, then `stops_to_road_lines.py`, and writes **per-direction** GeoJSON files under `output/<service>/` (no combined “all directions” files).
 
 ```powershell
 python .\scripts\run_bus_route.py services/565.json
@@ -40,12 +40,18 @@ python .\scripts\run_bus_route.py services/565.json -- --allow-service
 
 Anything **after `--`** is passed only to `stops_to_road_lines.py`.
 
+### Note
+
+The default roads step uses the public **Overpass** service (can be slow or return HTTP 429) and then **OSRM** with `continue_straight=true` on the route request. For a faster run without the Overpass snap, use `-- --allow-service` as above. You can set **`OVERPASS_URL`** to another Overpass endpoint. With **`GRAPHHOPPER_API_KEY`** set, the default path uses GraphHopper instead of Overpass+OSRM. Final lines match **OSM + the router**; adjust OSM or self-host a router if a corridor is wrong.
+
 ### Outputs
 
-For `services/565.json` you get:
+Files follow the **order of directions in the service JSON** (1-based index `i`):
 
-- `output/565/565.geojson` — stop points  
-- `output/565/565-roads.geojson` — road-following lines  
+- `{service}-i.geojson` — stop points for that direction  
+- `{service}-i-roads.geojson` — road LineString for that direction (empty `features` if that direction has fewer than two stops with coordinates)  
+
+The third path argument to `route_to_geojson.py` / `stops_to_road_lines.py` only selects the **output folder** (the path’s parent directory); the filename is ignored.
 
 ---
 

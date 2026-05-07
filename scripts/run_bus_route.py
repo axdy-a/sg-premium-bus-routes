@@ -1,10 +1,9 @@
 """Run route_to_geojson.py then stops_to_road_lines.py for one bus service JSON file.
 
-Outputs go under output/<service>/ in the project root, e.g.
-  services/767.json  ->  output/767/767.geojson  and  output/767/767-roads.geojson
+Writes only per-direction files under output/<service>/, in service JSON order:
+  {n}-1.geojson, {n}-2.geojson, … and {n}-1-roads.geojson, {n}-2-roads.geojson, …
 
 Does not modify the logic of those scripts; they are invoked as subprocesses.
-
 Usage:
   python run_bus_route.py 767.json
   python run_bus_route.py path/to/960.json --bus-stops path/to/bus-stops.json
@@ -78,19 +77,19 @@ def main() -> None:
             sys.exit(1)
 
     py = sys.executable
-    print(f"Output folder: {out_dir}", flush=True)
+    print(f"Service {stem} -> output: {out_dir}", flush=True)
 
+    print("Step 1/2: stop points (route_to_geojson.py)", flush=True)
     subprocess.run(
         [py, str(route_py), str(svc), str(stops_path), str(points_out)],
         check=True,
     )
-    print(f"  wrote {points_out.name}", flush=True)
 
+    print("Step 2/2: road lines (stops_to_road_lines.py)", flush=True)
     subprocess.run(
         [py, str(roads_py), str(svc), str(stops_path), str(roads_out), *stops_extra],
         check=True,
     )
-    print(f"  wrote {roads_out.name}", flush=True)
     print("Done.", flush=True)
 
 

@@ -6,6 +6,9 @@
   public Overpass API, then route with OSRM (no API key). Optional
   ``GRAPHHOPPER_API_KEY`` uses GraphHopper to exclude ``SERVICE`` in one shot
   instead.
+
+Writes one GeoJSON per direction: ``{service}-1-roads.geojson``, ``{service}-2-roads.geojson``, …
+(order matches the service JSON). The optional third CLI path sets the output directory (parent only).
 """
 
 from __future__ import annotations
@@ -39,16 +42,21 @@ NO_SERVICE_MODEL = {
 
 _SNAP_CACHE: dict[tuple[float, float], tuple[float, float]] = {}
 
+# Minimum seconds between Overpass HTTP requests (429 mitigation); edit here to tune.
+OVERPASS_MIN_INTERVAL_S: float = 1.2
+_LAST_OVERPASS_END_MONO: float = 0.0
 
-def load_stop_coords(
+
+def load_direction_coords(
     svc_path: Path, stops_path: Path
 ) -> tuple[list[tuple[str, list[tuple[float, float]]]], list[tuple[str, str]]]:
+    """One (direction_name, coords) pair per entry in the service JSON (same order)."""
     with stops_path.open(encoding="utf-8") as f:
         by_name = {s["name"]: s for s in json.load(f)}
     with svc_path.open(encoding="utf-8") as f:
         directions = json.load(f)
 
-    legs: list[tuple[str, list[tuple[float, float]]]] = []
+    ordered: list[tuple[str, list[tuple[float, float]]]] = []
     missing: list[tuple[str, str]] = []
 
     for d in directions:
@@ -63,12 +71,11 @@ def load_stop_coords(
             lon, lat = float(c["long"]), float(c["lat"])
             if not coords or (coords[-1][0] != lon or coords[-1][1] != lat):
                 coords.append((lon, lat))
-        if len(coords) >= 2:
-            legs.append((name, coords))
-        elif coords:
+        ordered.append((name, coords))
+        if len(coords) < 2 and coords:
             print(f"Skip '{name}': need at least 2 stops with coordinates", file=sys.stderr)
 
-    return legs, missing
+    return ordered, missing
 
 
 def _dist_m(px: float, py: float, qx: float, qy: float) -> float:
@@ -106,6 +113,13 @@ def _closest_on_geometry(
 
 
 def _overpass_query(overpass_url: str, query: str) -> dict:
+    global _LAST_OVERPASS_END_MONO
+    cd = OVERPASS_MIN_INTERVAL_S
+    if cd > 0:
+        now = time.monotonic()
+        wait = cd - (now - _LAST_OVERPASS_END_MONO)
+        if wait > 0:
+            time.sleep(wait)
     data = urllib.parse.urlencode({"data": query}).encode("utf-8")
     req = urllib.request.Request(
         overpass_url,
@@ -116,8 +130,11 @@ def _overpass_query(overpass_url: str, query: str) -> dict:
         },
         method="POST",
     )
-    with urllib.request.urlopen(req, timeout=120) as resp:
-        return json.load(resp)
+    try:
+        with urllib.request.urlopen(req, timeout=120) as resp:
+            return json.load(resp)
+    finally:
+        _LAST_OVERPASS_END_MONO = time.monotonic()
 
 
 def snap_to_non_service_highway(
@@ -125,7 +142,6 @@ def snap_to_non_service_highway(
     lat: float,
     overpass_url: str,
     radii: tuple[int, ...] = (90, 180, 400, 900),
-    pause_s: float = 0.35,
 ) -> tuple[float, float]:
     key = (round(lon, 6), round(lat, 6))
     if key in _SNAP_CACHE:
@@ -134,7 +150,7 @@ def snap_to_non_service_highway(
     px, py = lon, lat
     best: tuple[float, float, float] | None = None
 
-    for ri, radius in enumerate(radii):
+    for radius in radii:
         q = (
             f"[out:json][timeout:90];\n"
             f"(\n"
@@ -142,8 +158,6 @@ def snap_to_non_service_highway(
             f");\n"
             "out geom;\n"
         )
-        if ri and pause_s > 0:
-            time.sleep(pause_s)
         try:
             data = _overpass_query(overpass_url, q)
         except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError, OSError) as e:
@@ -177,18 +191,34 @@ def snap_to_non_service_highway(
 def snap_leg_coords(
     coords: list[tuple[float, float]],
     overpass_url: str,
+    *,
+    log_snaps: bool = True,
 ) -> list[tuple[float, float]]:
     out: list[tuple[float, float]] = []
-    for lon, lat in coords:
+    n = len(coords)
+    for j, (lon, lat) in enumerate(coords, start=1):
+        if log_snaps:
+            print(f"    Snap stop {j}/{n} ({lat:.5f}, {lon:.5f}) ...", flush=True)
         slon, slat = snap_to_non_service_highway(lon, lat, overpass_url)
         if not out or (out[-1][0] != slon or out[-1][1] != slat):
             out.append((slon, slat))
     return out
 
 
-def osrm_line(coords: list[tuple[float, float]], base: str, profile: str) -> dict:
+def osrm_line(
+    coords: list[tuple[float, float]],
+    base: str,
+    profile: str,
+    *,
+    log: bool = True,
+) -> dict:
     if len(coords) > MAX_WAYPOINTS:
         raise ValueError(f"At most {MAX_WAYPOINTS} waypoints for this OSRM server")
+    if log:
+        print(
+            f"    OSRM route: {len(coords)} waypoint(s) -> {base.rstrip('/')}/route/v1/{profile}/...",
+            flush=True,
+        )
     coord_str = ";".join(f"{lon},{lat}" for lon, lat in coords)
     q = urllib.parse.urlencode(
         {"overview": "full", "geometries": "geojson", "continue_straight": "true"}
@@ -199,7 +229,13 @@ def osrm_line(coords: list[tuple[float, float]], base: str, profile: str) -> dic
         data = json.load(resp)
     if data.get("code") != "Ok":
         raise RuntimeError(f"OSRM: {data.get('code')} {data.get('message', '')}")
-    return data["routes"][0]["geometry"]
+    geom = data["routes"][0]["geometry"]
+    if log and isinstance(geom, dict) and geom.get("type") == "LineString":
+        n_pt = len(geom.get("coordinates") or [])
+        print(f"    OSRM ok - LineString with {n_pt} coordinate pair(s)", flush=True)
+    elif log:
+        print("    OSRM ok", flush=True)
+    return geom
 
 
 def _graphhopper_points_to_linestring(points: object) -> dict:
@@ -223,9 +259,16 @@ def graphhopper_line_no_service(
     api_key: str,
     base: str,
     profile: str,
+    *,
+    log: bool = True,
 ) -> dict:
     if len(coords) > MAX_WAYPOINTS:
         raise ValueError(f"Use at most {MAX_WAYPOINTS} waypoints per request")
+    if log:
+        print(
+            f"    GraphHopper route: {len(coords)} waypoint(s), profile={profile} -> {base.rstrip('/')}/route",
+            flush=True,
+        )
     body = {
         "points": [[lon, lat] for lon, lat in coords],
         "profile": profile,
@@ -257,7 +300,13 @@ def graphhopper_line_no_service(
     if not paths:
         msg = data.get("message") or data.get("hints") or json.dumps(data)[:400]
         raise RuntimeError(f"GraphHopper: no paths — {msg}")
-    return _graphhopper_points_to_linestring(paths[0]["points"])
+    ls = _graphhopper_points_to_linestring(paths[0]["points"])
+    if log and isinstance(ls, dict) and ls.get("type") == "LineString":
+        n_pt = len(ls.get("coordinates") or [])
+        print(f"    GraphHopper ok - LineString with {n_pt} coordinate pair(s)", flush=True)
+    elif log:
+        print("    GraphHopper ok", flush=True)
+    return ls
 
 
 def parse_args() -> tuple[list[str], bool]:
@@ -296,13 +345,52 @@ def main() -> None:
     exclude_service = not allow_service
     use_graphhopper = exclude_service and bool(gh_key)
 
-    legs, missing = load_stop_coords(svc_path, stops_path)
+    ordered, missing = load_direction_coords(svc_path, stops_path)
     if missing:
         for direction, code in missing:
             print(f"Missing stop {code} ({direction})", file=sys.stderr)
 
-    features = []
-    for direction, coords in legs:
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    stem = svc_path.stem
+
+    n_ord = len(ordered)
+    print(f"Roads GeoJSON: {svc_path.name}", flush=True)
+    if use_graphhopper:
+        print(
+            f"  Mode: GraphHopper (no service roads) - {gh_base} profile={profile_gh}",
+            flush=True,
+        )
+    elif allow_service:
+        print(
+            f"  Mode: OSRM raw stops (--allow-service) - {osrm_base} profile={profile_osrm}",
+            flush=True,
+        )
+    else:
+        print(
+            f"  Mode: Overpass snap -> OSRM - Overpass {overpass_url}",
+            flush=True,
+        )
+        print(
+            f"  Overpass cooldown: {OVERPASS_MIN_INTERVAL_S}s between requests",
+            flush=True,
+        )
+        print(
+            f"  OSRM: {osrm_base} profile={profile_osrm}",
+            flush=True,
+        )
+
+    for i, (direction, coords) in enumerate(ordered, start=1):
+        split_path = out_path.parent / f"{stem}-{i}-roads.geojson"
+        print(
+            f"--- Direction {i}/{n_ord}: {direction} ({len(coords)} stop coordinate(s)) ---",
+            flush=True,
+        )
+        if len(coords) < 2:
+            split_fc: dict = {"type": "FeatureCollection", "features": []}
+            split_path.write_text(json.dumps(split_fc, indent=2), encoding="utf-8")
+            print(f"  Skip (need >=2 stops): wrote empty {split_path.name}", flush=True)
+            continue
+
         try:
             if allow_service:
                 geom = osrm_line(coords, osrm_base, profile_osrm)
@@ -315,9 +403,14 @@ def main() -> None:
                 props_profile = profile_gh
                 snap_method = "graphhopper_custom_model"
             else:
+                print("  Snapping stops to nearest non-service car way (Overpass)...", flush=True)
                 snapped = snap_leg_coords(coords, overpass_url)
                 if len(snapped) < 2:
                     raise RuntimeError("After snapping, fewer than 2 distinct waypoints remain.")
+                print(
+                    f"  {len(snapped)} distinct waypoint(s) after snap (from {len(coords)} stops)",
+                    flush=True,
+                )
                 geom = osrm_line(snapped, osrm_base, profile_osrm)
                 router = "osrm"
                 props_profile = profile_osrm
@@ -325,25 +418,23 @@ def main() -> None:
         except (urllib.error.HTTPError, urllib.error.URLError, RuntimeError, ValueError) as e:
             print(f"Routing failed for '{direction}': {e}", file=sys.stderr)
             sys.exit(1)
-        features.append(
-            {
-                "type": "Feature",
-                "geometry": geom,
-                "properties": {
-                    "direction": direction,
-                    "profile": props_profile,
-                    "waypoints": len(coords),
-                    "router": router,
-                    "exclude_service": exclude_service,
-                    "snap_method": snap_method,
-                },
-            }
-        )
 
-    fc = {"type": "FeatureCollection", "features": features}
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_text(json.dumps(fc, indent=2), encoding="utf-8")
-    print(f"Wrote {out_path} ({len(features)} LineStrings)")
+        feat = {
+            "type": "Feature",
+            "geometry": geom,
+            "properties": {
+                "direction": direction,
+                "profile": props_profile,
+                "waypoints": len(coords),
+                "router": router,
+                "exclude_service": exclude_service,
+                "snap_method": snap_method,
+            },
+        }
+
+        one_dir_fc = {"type": "FeatureCollection", "features": [feat]}
+        split_path.write_text(json.dumps(one_dir_fc, indent=2), encoding="utf-8")
+        print(f"  Wrote {split_path.name} (1 LineString)", flush=True)
 
 
 if __name__ == "__main__":

@@ -1,4 +1,8 @@
-"""Build GeoJSON Point features from a bus service JSON + bus-stops.json."""
+"""Build GeoJSON Point features from a bus service JSON + bus-stops.json.
+
+Writes one FeatureCollection per direction: ``{service}-1.geojson``, ``{service}-2.geojson``, …
+The optional third CLI argument sets the output directory (its parent folder); the filename is ignored.
+"""
 
 import json
 import sys
@@ -22,18 +26,20 @@ def main() -> None:
     with svc_path.open(encoding="utf-8") as f:
         directions = json.load(f)
 
-    features = []
+    stem = svc_path.stem
+    features_per_dir: list[list[dict]] = []
     missing: list[tuple[str, str, str]] = []
 
     for d in directions:
         dir_name = d["name"]
+        dir_features: list[dict] = []
         for seq, code in enumerate(d["stops"]):
             row = by_name.get(code)
             if not row:
                 missing.append((dir_name, code, str(seq)))
                 continue
             c = row["coordinates"]
-            features.append(
+            dir_features.append(
                 {
                     "type": "Feature",
                     "geometry": {"type": "Point", "coordinates": [c["long"], c["lat"]]},
@@ -46,17 +52,29 @@ def main() -> None:
                     },
                 }
             )
-
-    fc = {"type": "FeatureCollection", "features": features}
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    out_path.write_text(json.dumps(fc, indent=2), encoding="utf-8")
-    print(f"Wrote {out_path} ({len(features)} features)")
+        features_per_dir.append(dir_features)
 
     if missing:
         print("Missing from bus-stops.json:", file=sys.stderr)
         for dir_name, code, seq in missing:
             print(f"  {dir_name} seq {seq}: {code}", file=sys.stderr)
         sys.exit(1)
+
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+
+    n_dir = len(features_per_dir)
+    print(f"Points GeoJSON: {svc_path.name} ({n_dir} direction(s))", flush=True)
+
+    for i, group in enumerate(features_per_dir, start=1):
+        dir_name = directions[i - 1]["name"]
+        split_path = out_path.parent / f"{stem}-{i}.geojson"
+        print(
+            f"  [{i}/{n_dir}] {dir_name}: {len(group)} stops -> {split_path.name}",
+            flush=True,
+        )
+        split_fc = {"type": "FeatureCollection", "features": group}
+        split_path.write_text(json.dumps(split_fc, indent=2), encoding="utf-8")
+        print(f"      wrote {len(group)} point features", flush=True)
 
 
 if __name__ == "__main__":
